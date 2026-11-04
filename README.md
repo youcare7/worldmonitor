@@ -3,11 +3,11 @@
 <div align="center">
 
 [![Spec](https://img.shields.io/badge/spec-v2.0-blue)](https://github.com/youcare7/worldmonitor/blob/main/SPEC.md)
-[![Type](https://img.shields.io/badge/type-specification%20repo-purple)](#-这是什么)
-[![Trigger](https://img.shields.io/badge/trigger-07%3A15%20daily-orange)](#-每天产出什么)
-[![Workflow](https://img.shields.io/badge/workflow-manual%20only-lightgrey)](#-口径真相源与变更流程)
-[![Word Count](https://img.shields.io/badge/word%20count-800--1200-red)](#-结构四分区)
-[![License](https://img.shields.io/badge/license-MIT-green)](#-license)
+[![Type](https://img.shields.io/badge/type-specification%20repo-purple)](#about)
+[![Trigger](https://img.shields.io/badge/trigger-07%3A15%20daily-orange)](#output)
+[![Workflow](https://img.shields.io/badge/workflow-manual%20only-lightgrey)](#truth)
+[![Word Count](https://img.shields.io/badge/word%20count-800--1200-red)](#structure)
+[![License](https://img.shields.io/badge/license-MIT-green)](#license)
 
 # worldmonitor
 
@@ -32,21 +32,23 @@
 <details>
 <summary>📑 目录</summary>
 
-- [这是什么](#-这是什么)
-- [每天产出什么](#-每天产出什么)
-- [结构：四分区](#-结构四分区)
-- [单条怎么写](#-单条怎么写)
-- [几条最要紧的规则](#-几条最要紧的规则)
-- [仓库结构](#-仓库结构)
-- [口径真相源与变更流程](#-口径真相源与变更流程)
-- [私有信息边界](#-私有信息边界)
-- [明确不做](#-明确不做)
-- [口径演变](#-口径演变)
-- [License](#-license)
+- [这是什么](#about)
+- [每天产出什么](#output)
+- [结构：四分区](#structure)
+- [单条怎么写](#writing)
+- [几条最要紧的规则](#rules)
+- [仓库结构](#layout)
+- [口径真相源与变更流程](#truth)
+- [私有信息边界](#privacy)
+- [明确不做](#not-doing)
+- [口径演变](#history)
+- [License](#license)
 
 </details>
 
 ---
+
+<a id="about"></a>
 
 ## 🔍 这是什么
 
@@ -65,6 +67,8 @@ worldmonitor 是一份**单人定制新闻速报**的规格仓库，不是新闻
 
 ---
 
+<a id="output"></a>
+
 ## 📦 每天产出什么
 
 | 产物 | 时间 | 渠道 |
@@ -76,6 +80,8 @@ worldmonitor 是一份**单人定制新闻速报**的规格仓库，不是新闻
 <p align="right">(<a href="#readme-top">回到顶部 ↑</a>)</p>
 
 ---
+
+<a id="structure"></a>
 
 ## 🧭 结构：四分区
 
@@ -117,6 +123,8 @@ worldmonitor 是一份**单人定制新闻速报**的规格仓库，不是新闻
 
 ---
 
+<a id="writing"></a>
+
 ## ✍️ 单条怎么写
 
 每条 **50–90 字**，严格两段，**不许合并成一句**：
@@ -135,6 +143,8 @@ worldmonitor 是一份**单人定制新闻速报**的规格仓库，不是新闻
 
 ---
 
+<a id="rules"></a>
+
 ## ⚠️ 几条最要紧的规则
 
 完整规则见 **[SPEC.md](SPEC.md)**，此处只列会被违反得最频繁的几条：
@@ -149,6 +159,8 @@ worldmonitor 是一份**单人定制新闻速报**的规格仓库，不是新闻
 <p align="right">(<a href="#readme-top">回到顶部 ↑</a>)</p>
 
 ---
+
+<a id="layout"></a>
 
 ## 🗂️ 仓库结构
 
@@ -172,6 +184,8 @@ worldmonitor/
 
 ---
 
+<a id="truth"></a>
+
 ## 📐 口径真相源与变更流程
 
 [`SPEC.md`](SPEC.md) 是唯一真相源。改口径的**唯一正确顺序**：
@@ -188,6 +202,8 @@ worldmonitor/
 
 ---
 
+<a id="privacy"></a>
+
 ## 🔒 私有信息边界
 
 以下内容**不进本仓库**，只在运行时由执行方提供。仓库里最多出现字段名：
@@ -199,6 +215,8 @@ worldmonitor/
 <p align="right">(<a href="#readme-top">回到顶部 ↑</a>)</p>
 
 ---
+
+<a id="not-doing"></a>
 
 ## 🚫 明确不做
 
@@ -214,6 +232,8 @@ worldmonitor/
 
 ---
 
+<a id="history"></a>
+
 ## 📜 口径演变
 
 | 阶段 | 口径 |
@@ -227,6 +247,8 @@ worldmonitor/
 <p align="right">(<a href="#readme-top">回到顶部 ↑</a>)</p>
 
 ---
+
+<a id="license"></a>
 
 ## 📄 License
 
