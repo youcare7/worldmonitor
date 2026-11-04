@@ -1,0 +1,4 @@
+# 运行产物与私有文件不入公开仓库（见 README「私有信息边界」）
+archive/
+PLAN.md
+HANDOVER.md
