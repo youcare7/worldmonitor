@@ -1,29 +1,42 @@
-name: Daily World Monitor
+# 口径巡检：仅手动触发（workflow_dispatch）。
+# 不做定时生产 —— 定时执行体是云端定时任务，不是 GitHub Actions。
+# 历史教训：本文件曾带 on.schedule 且依赖不存在的 requirements.txt，导致每日失败邮件，
+# 已按 SPEC.md 附录 A 废弃定时触发。巡检项与附录 A 的废弃口径清单一一对应。
+
+name: spec-patrol
 
 on:
-  schedule:
-    # 每天早上 8:30 UTC 运行（北京时间 16:30）
-    - cron: '30 0 * * *'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
-  monitor:
+  patrol:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 检查废弃口径是否复活
         run: |
-          pip install -r requirements.txt
-      
-      - name: Run monitor
-        env:
-          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
-          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
-          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
-        run: python scripts/monitor.py --run-once
+          fail=0
+          # 1) 已废弃数据源的「已接入」类表述（SPEC 附录 A / R3）
+          if grep -rn "已接入.*GDELT\|已接入.*ACLED\|已接入.*AIS\|已接入.*ADS-B" \
+               --include="*.md" --include="*.yaml" --include="*.yml" . ; then
+            echo "::error::发现「已接入」未实际接入数据源的表述（违反 R3）"; fail=1
+          fi
+          # 2) 五板块口径复活（sections.yaml 出现第五分区）
+          if grep -n "order: 5" config/sections.yaml ; then
+            echo "::error::sections.yaml 出现 order: 5 —— 旧五板块口径复活"; fail=1
+          fi
+          # 3) 编造热度数字的旧模板写法
+          if grep -rn "热度: \|热度：\|hot_score" --include="*.md" --include="*.yaml" . ; then
+            echo "::error::发现「热度数值」类编造写法（违反 R1）"; fail=1
+          fi
+          # 4) 定时触发复活
+          if grep -n "on:" -A3 .github/workflows/daily.yml | grep -q "schedule" ; then
+            echo "::error::daily.yml 中出现 schedule 定时触发（附录 A 已废弃）"; fail=1
+          fi
+          if [ "$fail" -eq 1 ]; then
+            echo "::error::口径巡检未通过，见上方命中项"
+            exit 1
+          fi
+          echo "口径巡检通过：无废弃口径复活"
